@@ -1,0 +1,26 @@
+{
+  "name": "bharat-cli",
+  "version": "0.1.0",
+  "description": "CLI tool for Indian-specific workflows and ads4you automation.",
+  "main": "bin/bharat.js",
+  "bin": {
+    "bharat": "bin/bharat.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bin/bharat.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.14.0",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "dotenv": "^16.6.1",
+    "execa": "^5.1.1",
+    "p-limit": "^3.1.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0"
+  }
+}
