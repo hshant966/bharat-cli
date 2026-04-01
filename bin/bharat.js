@@ -10,6 +10,7 @@ const jobAction = require('../src/commands/jobs');
 const adsAction = require('../src/commands/ads');
 const statusAction = require('../src/commands/status');
 const superpowerAction = require('../src/commands/superpower');
+const compareAction = require('../src/commands/compare');
 
 program
   .name('bharat')
@@ -25,6 +26,23 @@ const adsSchema = z.object({
   generate: z.boolean().optional(),
   script: z.string().min(1, 'Script name is required').optional(),
 });
+
+const compareSchema = z.object({
+  query: z.string().min(3, 'Query must be at least 3 characters').optional(),
+});
+
+program
+  .command('compare')
+  .description('Benchmark Bharat vs Codex/Gemini via 5-node parallel scan')
+  .option('-q, --query <text>', 'Insight query to search and compare')
+  .action((options) => {
+    try {
+      compareSchema.parse(options);
+      compareAction(options);
+    } catch (err) {
+      console.error(chalk.red('Invalid options for compare command:'), err.errors);
+    }
+  });
 
 program
   .command('namaste')
